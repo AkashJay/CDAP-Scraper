@@ -11,4 +11,8 @@ import scrapy
 class CdapScraperItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    heading = scrapy.Field()
+    link = scrapy.Field()
+    content = scrapy.Field()
+    date = scrapy.Field()
     pass
