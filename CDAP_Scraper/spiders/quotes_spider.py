@@ -1,25 +1,18 @@
 import scrapy
+from CDAP_Scraper.items import CdapScraperItem
 
 
 class QuotesSpider(scrapy.Spider):
-    name = "quotes"
 
-#Scrapy schedules the scrapy.Request objects returned by the start_requests method of the Spider
-    # def start_requests(self):
-    #     urls = [
-    #         'http://quotes.toscrape.com/page/1/',
-    #         'http://quotes.toscrape.com/page/2/',
-    #     ]
-    #     for url in urls:
-    #         yield scrapy.Request(url=url, callback=self.parse)
-
-    start_urls = [
-        'https://www.sliit.lk/',
-    ]
+    name = 'lankadeepa'
+    allowed_domains = ['lankadeepa.lk']
+    start_urls = ['http://www.lankadeepa.lk/features/1']
 
     def parse(self, response):
-        page = response.url.split("/")[-2]
-        filename = 'quotes-%s.html' % page
-        with open(filename, 'wb') as f:
-            f.write(response.body)
-        self.log('Saved file %s' % filename)
+
+        # Main headings
+        for news_block in response.xpath("//div[contains(@class, 'simple-thumb')]"):
+            item = CdapScraperItem()
+            heading = news_block.xpath("h3/a/text()").extract_first()
+            item["heading"] = heading
+            yield item

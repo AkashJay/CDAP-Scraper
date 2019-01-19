@@ -6,14 +6,14 @@ class HirunewsSpider(scrapy.Spider):
     name = 'hirunews'
     allowed_domains = ['hirunews.lk']
     # start_urls = ['http://www.hirunews.lk/local-news.php?pageID=%d' % page for page in range(1,1842)]
-    start_urls = ['http://newsfirst.lk/category/local/']
+    start_urls = ['http://www.hirunews.lk/local-news.php']
 
     def parse(self, response):
 
         # Main headings
-        for news_block in response.xpath("//div[contains(@class, 'main-news-heading para-tot-center')]"):
+        for news_block in response.xpath("//div[contains(@class, 'lts-cntp')]"):
             item = CdapScraperItem()
-            heading = news_block.xpath("a/h1/text()").extract_first()
+            heading = news_block.xpath("a/text()").extract_first()
             content_link = news_block.xpath("a/@href").extract_first()
 
             item["heading"] = heading
