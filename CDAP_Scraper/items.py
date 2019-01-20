@@ -14,5 +14,5 @@ class CdapScraperItem(scrapy.Item):
     heading = scrapy.Field()
     link = scrapy.Field()
     content = scrapy.Field()
-    date = scrapy.Field()
-    pass
+    # date = scrapy.Field()
+
