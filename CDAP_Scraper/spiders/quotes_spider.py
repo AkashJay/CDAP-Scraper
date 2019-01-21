@@ -3,10 +3,10 @@ from CDAP_Scraper.items import CdapScraperItem
 
 
 class QuotesSpider(scrapy.Spider):
-    name = 'lankadeepa'
+    name = 'Test'
     allowed_domains = ['lankadeepa.lk']
-    # start_urls = ['http://www.lankadeepa.lk/features/1/%d' % page for page in range(0,91)]
-    start_urls = ['http://www.lankadeepa.lk/features/1/60']
+    start_urls = ['http://www.lankadeepa.lk/features/1/%d' % page for page in range(15000, 18000, 30)]
+    # start_urls = ['http://www.lankadeepa.lk/features/1/300']
 
     def parse(self, response):
 
