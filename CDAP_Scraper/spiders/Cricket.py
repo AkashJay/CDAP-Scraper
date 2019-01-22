@@ -5,8 +5,8 @@ from CDAP_Scraper.items import CdapScraperItem
 class CricketSpider(scrapy.Spider):
     name = 'Cricket'
     allowed_domains = ['kelimandala.lankadeepa.lk']
-    # start_urls = ['http://www.lankadeepa.lk/features/1/%d' % page for page in range(1, 30, 30)]
-    start_urls = ['http://kelimandala.lankadeepa.lk/more/cricket']
+    start_urls = ['http://kelimandala.lankadeepa.lk/more/cricket/%d' % page for page in range(1600,8000,20)]
+    # start_urls = ['http://kelimandala.lankadeepa.lk/more/cricket']
 
     def parse(self, response):
 
