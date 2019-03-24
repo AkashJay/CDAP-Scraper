@@ -1,9 +1,10 @@
 import csv
+import re
 
-with open('/home/akash/Documents/CDAP/Scraper/CDAP_Scraper/Lankadeepa/lankadeep14.csv') as csvfile:
+with open('/home/akash/Documents/CDAP/Cropus/Original CSV Files/Lankadeepa( CSV )/lankadeep17.csv') as csvfile:
     readCSV = csv.reader(csvfile, delimiter=',')
     heading = []
-    x = 1
+    x = 10589
     for row in readCSV:
 
         f = open(str(x)+".txt", "w+")
@@ -12,10 +13,14 @@ with open('/home/akash/Documents/CDAP/Scraper/CDAP_Scraper/Lankadeepa/lankadeep1
         # print(row[0])
         # print(row[0],row[1],row[2],)
         heading.append(row[1])
-        content = row[0].replace("\n", "")
+        content = row[0]
 
-        f.write(content)
+        # remove white spaces
+        textsplitSpace = re.sub("\s\s+", " ", content)
+
+        # Remove tab spaces
+        f.write(re.sub("\t+", " ", textsplitSpace))
         f.close()
 
-    print(heading)
+    print(x)
 
